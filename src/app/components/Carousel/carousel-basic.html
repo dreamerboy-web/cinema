@@ -1,0 +1,12 @@
+<button class="sortDate" mat-raised-button color="primary" (click)="toggleFormat()">Посортувати по даті</button>
+<ngb-carousel>
+  <ng-template *ngFor="let film of Films | sortBy: by" ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="film.img" alt="Random first slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>{{film.name}}</h3>
+      <p>Дата виходу: {{film.data | date: 'fullDate'}}</p>
+    </div>
+  </ng-template>
+</ngb-carousel>

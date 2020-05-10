@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Акції та пропозиції</h2>
+  <div class="shares">
+    <div *ngFor="let share of Shares" class="share">
+      <h2>{{share.name | uppercase}}</h2>
+      <p><span>Проводиться:</span> з {{share.start | date}} по {{share.end | date}}</p>
+      <p class="rules"><span>Првила:</span> {{share.info}}</p>
+    </div>
+    <br>
+  </div>
+</div>
