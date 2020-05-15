@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="ticket">
+    <h3>Заказ #{{oneTicket._id}}</h3>
+    <p>Імя покупця: {{oneTicket.watcherName}}</p>
+    <p>Email покупця: {{oneTicket.watcherEmail}}</p>
+    <p>Тип квитка: {{oneTicket.typeTicket}}</p>
+    <p>Тип фільму: {{oneTicket.filmType}}</p>
+    <p>Час сеансу: {{oneTicket.dateSession}}</p>
+    <p>День покупки: {{oneTicket.dateTimeBy | date}}</p>
+    <p>Фільм: {{oneTicket.film}}</p>
+    <p>КІнозал: {{oneTicket.hall}}</p>
+    <p *ngIf="oneTicket.prise">Ціна: {{oneTicket.prise | number: '1.0-0'}}</p>
+  </div>
+
+</div>

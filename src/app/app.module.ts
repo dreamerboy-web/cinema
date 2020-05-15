@@ -14,12 +14,20 @@ import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { SortByPipe } from './pipes/sortBy/sort-by.pipe';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbdCarouselBasic} from "./components/Carousel/carousel-basic";
+import {NgbdCarouselBasic} from './components/Carousel/carousel-basic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { SharesComponent } from './components/shares/shares.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
+import { FilmsOnScreenComponent } from './components/films-on-screen/films-on-screen.component';
+import { SingleFilmComponent } from './components/single-film/single-film.component';
+import {MatSelectModule} from '@angular/material/select';
+import { SortGenrePipe } from './pipes/sortGenre/sort-genre.pipe';
+import {FormsModule} from '@angular/forms';
+import { TypeTicketPipe } from './pipes/TypeTicket/type-ticket.pipe';
+import {MatInputModule} from '@angular/material/input';
+import { SingleTicketsComponent } from './components/single-tickets/single-tickets.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -34,7 +42,12 @@ registerLocaleData(localeRu, 'ru');
     NgbdCarouselBasic,
     FooterComponent,
     NavBarComponent,
-    SharesComponent
+    SharesComponent,
+    FilmsOnScreenComponent,
+    SingleFilmComponent,
+    SortGenrePipe,
+    TypeTicketPipe,
+    SingleTicketsComponent
   ],
   imports: [
     NgbPaginationModule, NgbAlertModule,
@@ -44,7 +57,7 @@ registerLocaleData(localeRu, 'ru');
     MatSliderModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule, MatSelectModule, FormsModule, MatInputModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'ru'}],
   exports: [

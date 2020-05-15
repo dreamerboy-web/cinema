@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="filter text-center">
+    <h2>Сортування по жанру</h2>
+    <div>
+      <span>Виберіть жанр:</span>
+      <mat-form-field class="GOGO">
+
+        <mat-select     [(value)]="selected">
+          <mat-option *ngFor="let op of genre; index as i;" [value]="i" >{{op}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <p>Ваш вибір: {{genre[selected]}}</p>
+
+
+  </div>
+  <div  class="row">
+    <div *ngFor="let film of Films | sortGenre: genre[selected]" class="col-sm-4 fack text-center">
+      <div class=" allFilms">
+        <img [src]=film.poster alt="">
+        <h2>{{film.name}}</h2>
+        <div class="ff">
+          Жанр:
+          <span class="ganre" *ngFor="let ganre of film.genre">{{ganre.nameOfGenre}}</span>
+        </div>
+      <a mat-flat-button color="warn" (click)="getId(film.id)">Перейти</a>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+

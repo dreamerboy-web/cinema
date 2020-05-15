@@ -1,26 +1,25 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'sortBy'
 })
 export class SortByPipe implements PipeTransform {
 
-  transform(value: any, by: string): unknown {
-    if(by==='asc') {
-      let arr = value.sort((a, b) =>{
-        return a.data - b.data
+  transform(value: any, by: string) {
+    if (by === 'asc') {
+      return value.sort((a, b) => {
+        return a.id - b.id;
       });
-      return arr;
-    } else if(by==='desc'){
-      let arr = value.sort((a, b) =>{
-        return b.data - a.data
+    } else if (by === 'desc') {
+      const arr = value.sort((a, b) => {
+        return b.id - a.id;
       });
       return arr;
     } else {
-      let arr = value.sort((a, b) =>{
-        return a.data - b.data
+      const arr = value.sort((a, b) => {
+        return b.id - a.id;
       });
-      return arr;
+
     }
 
   }

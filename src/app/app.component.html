@@ -2,8 +2,8 @@
 
 </style>
 
-<div [ngStyle]="{'background': getUrl()}" class="allContent">
-  <app-header></app-header>
+<div (wheel)="showNav()" [ngStyle]="{'background': getUrl()}" class="allContent">
+  <app-header ></app-header>
 
   <router-outlet></router-outlet>
 

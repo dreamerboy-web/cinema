@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {config} from '../info/config';
 import {Observable} from 'rxjs';
+import {config} from '../info/config';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RestServiseService {
+export class SoonFilmsService {
 
   constructor(private http: HttpClient) { }
 
-  getRest(): Observable<any>{
-    return this.http.get(`${config.HOST}/users/users`);
+  getSoonFilms(): Observable<any>{
+    return this.http.get(`${config.HOST}/films/soon`);
   }
 }

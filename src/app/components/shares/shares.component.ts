@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GlobalConstants} from '../../info/info'
+import {RestServiseService} from '../../services/rest-servise.service';
 
 @Component({
   selector: 'app-shares',
@@ -7,11 +8,17 @@ import {GlobalConstants} from '../../info/info'
   styleUrls: ['./shares.component.sass']
 })
 export class SharesComponent implements OnInit {
-  Shares: any = GlobalConstants.shares;
 
-  constructor() { }
+
+  constructor(private testServire: RestServiseService) {
+  }
+
+  test: any[];
 
   ngOnInit(): void {
+    this.testServire.getRest().subscribe(data => {
+      this.test = data;
+    });
   }
 
 }

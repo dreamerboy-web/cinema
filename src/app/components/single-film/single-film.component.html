@@ -1,0 +1,85 @@
+<div class="container">
+
+  <div class="singleFilm">
+    <div class="singleFilmLeft">
+      <img [src]=oneFilm.poster alt="Poster">
+    </div>
+    <div class="singleFilmRight">
+      <form #sold="ngForm" (ngSubmit)="infoShow()">
+      <h2>{{oneFilm.name}}</h2>
+      <div class="text-center">
+        Жанр:
+        <span class="ganre" *ngFor="let ganre of oneFilm.genre">{{ganre.nameOfGenre}}</span>
+      </div>
+      <h3 class="text-center ">Сеанси</h3>
+      <div class="selleInfo">
+        <div *ngFor="let session of sessions; index as i" class="someSt">
+          <a mat-fab color="primary" class="db" (click)="showAll(i, threeD, twoD, selected)">{{session.data | date: 'shortTime'}}</a>
+          <div *ngIf="i === showId" class="allInfo">
+            <div class="some">
+              <span class="mainer">Зал:</span>
+              <span class="seckond">{{session.hall.id}}</span>
+            </div>
+            <div class="some">
+              <span class="mainer">Формат:</span>
+              <span class="seckond">{{session.hall.typeWatch}}</span>
+            </div>
+            <div class="some">
+              <span  class="mainer">Вільних сидінь:</span>
+              <span class="seckond">{{session.hall.availableSits}}</span>
+            </div>
+            <div class="some">
+              <span  class="mainer">Усього сидінь:</span>
+              <span class="seckond">{{Halls[session.hall.id-1].availableSits}}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+        <div>
+          <label>
+            Email
+          </label>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+              <input name="email" type="email" matInput  placeholder="pat@example.com" [(ngModel)]="loginValue.watcherEmail" required>
+            <mat-error *ngIf="sold.invalid">Уведіть правильну пошту</mat-error>
+          </mat-form-field>
+
+
+        </div>
+        <div>
+          <label>
+           Прізвище та ініціали
+          </label>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your Name</mat-label>
+            <input name="name" type="Name" matInput placeholder="Name" [(ngModel)]="loginValue.watcherName" required>
+            <mat-error *ngIf="sold.invalid">Уведіть коректне імя</mat-error>
+          </mat-form-field>
+
+<!--          <input name="name" type="pass" placeholder="Name" [(ngModel)]="loginValue.watcherName" required >-->
+        </div>
+        <div>
+          <span>Виберіть тип квитка: </span>
+          <mat-form-field class="GOGO">
+
+            <mat-select    [(value)]="selected">
+              <mat-option  (click)="getIndex(i)" *ngFor="let op of type; index as i;" [value]="i" >{{op}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <p class="prise">Ціна:</p>
+        <div (click)="getPrise(threeD)" class="priseIn" *ngIf="typeCinema === '3D'">{{threeD | typeTicket: type[selected]}}</div>
+        <div  class="priseIn" *ngIf="typeCinema === '2D'">{{twoD | typeTicket: type[selected]}}</div>
+        <button (click)="getId(twoD)"  mat-raised-button color="primary"
+                 [disabled]="sold.invalid || sessions[letka].hall.availableSits === 0"  type="submit"> Купити квиток</button>
+      </form>
+    </div>
+  </div>
+
+</div>

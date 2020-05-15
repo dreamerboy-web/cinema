@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {GlobalConstants} from '../../info/info'
+import {Component, OnInit} from '@angular/core';
+import {GlobalConstants} from '../../info/info';
+import {RestServiseService} from '../../services/rest-servise.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,10 +9,17 @@ import {GlobalConstants} from '../../info/info'
 })
 export class FooterComponent implements OnInit {
 
+  test: any;
+  // soonFilm = this.test[0];
   cinemaName: string = GlobalConstants.nameCinema;
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private rest: RestServiseService) {
   }
 
+
+  ngOnInit(): void {
+    this.rest.getRest().subscribe(data => {
+      this.test = data;
+    });
+  }
 }

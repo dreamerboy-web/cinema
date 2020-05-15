@@ -23,13 +23,24 @@ export class AppComponent implements OnInit{
 
   getUrl()
   {
-    return "url('https://lever-client-logos.s3.amazonaws.com/286dad9f-f33d-4a58-ac83-cba7e21dab06-1551916272283.png')" +
-      "no-repeat fixed center 60%/ cover";
+    return 'url(\'https://lever-client-logos.s3.amazonaws.com/286dad9f-f33d-4a58-ac83-cba7e21dab06-1551916272283.png\')' +
+      'no-repeat fixed center 60%/ cover';
   }
 
-  nameCinema = GlobalConstants.nameCinema;
+
 
   ngOnInit(): void {
     this.renderer.addClass(this.document.body, 'body');
+  }
+
+  showNav() {
+    const nav = document.getElementsByClassName('navBarMenu');
+    if (window.pageYOffset > 200) {
+      // @ts-ignore
+      nav[0].style = 'visibility: visible; transition: 0.5s';
+    } else{
+      // @ts-ignore
+      nav[0].style = 'visibility: hidden; transition: 0.5s';
+    }
   }
 }
