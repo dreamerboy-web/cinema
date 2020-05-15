@@ -1,0 +1,12 @@
+<div class="footer">
+  <a class="btnLink" mat-stroked-button routerLink="actions">Усі акції та пропозиції</a>
+  <h3 class="text-center">Остання Акція</h3>
+  <div *ngFor="let soonFilm of test | slice:0:1">
+    <h2 class="text-center">{{soonFilm.name}}</h2>
+    <p>
+      {{soonFilm.info}}
+    </p>
+    <p class="text-center">Кінець акції: {{soonFilm.end | date}}</p>
+  </div>
+</div>
+
